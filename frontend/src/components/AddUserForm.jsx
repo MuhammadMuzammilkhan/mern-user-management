@@ -50,8 +50,6 @@ function AddUserForm({
 
     e.preventDefault();
 
-    // Validation
-
     if (
 
       !name ||
@@ -86,13 +84,13 @@ function AddUserForm({
 
       onUpdate(editingUser._id, userData);
 
-    } else {
+    }
+
+    else {
 
       onAdd(userData);
 
     }
-
-    // Clear Form
 
     setName("");
 
@@ -106,99 +104,172 @@ function AddUserForm({
 
   return (
 
-    <form onSubmit={handleSubmit}>
+    <form
 
-      <h2>
+      onSubmit={handleSubmit}
 
-        {editingUser
+      className="space-y-6"
 
-          ? "Update User"
+    >
 
-          : "Add New User"}
+      <div>
 
-      </h2>
+        <h2 className="text-2xl font-bold text-gray-800">
 
-      <input
+          {editingUser
 
-        type="text"
+            ? "Update User"
 
-        placeholder="Full Name"
+            : "Add New User"}
 
-        value={name}
+        </h2>
 
-        onChange={(e) =>
+        <p className="text-gray-500 mt-1">
 
-          setName(e.target.value)
+          Fill in the details below.
 
-        }
+        </p>
 
-      />
+      </div>
 
-      <br /><br />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-      <input
+        <div>
 
-        type="email"
+          <label className="block text-sm font-medium text-gray-700 mb-2">
 
-        placeholder="Email"
+            Full Name
 
-        value={email}
+          </label>
 
-        onChange={(e) =>
+          <input
 
-          setEmail(e.target.value)
+            type="text"
 
-        }
+            placeholder="Enter full name"
 
-      />
+            value={name}
 
-      <br /><br />
+            onChange={(e) =>
 
-      <input
+              setName(e.target.value)
 
-        type="text"
+            }
 
-        placeholder="Phone Number"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
 
-        value={phone}
+          />
 
-        onChange={(e) =>
+        </div>
 
-          setPhone(e.target.value)
+        <div>
 
-        }
+          <label className="block text-sm font-medium text-gray-700 mb-2">
 
-      />
+            Email Address
 
-      <br /><br />
+          </label>
 
-      <input
+          <input
 
-        type="text"
+            type="email"
 
-        placeholder="City"
+            placeholder="Enter email"
 
-        value={city}
+            value={email}
 
-        onChange={(e) =>
+            onChange={(e) =>
 
-          setCity(e.target.value)
+              setEmail(e.target.value)
 
-        }
+            }
 
-      />
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
 
-      <br /><br />
+          />
 
-      <button type="submit">
+        </div>
 
-        {editingUser
+        <div>
 
-          ? "Update User"
+          <label className="block text-sm font-medium text-gray-700 mb-2">
 
-          : "Add User"}
+            Phone Number
 
-      </button>
+          </label>
+
+          <input
+
+            type="text"
+
+            placeholder="Enter phone number"
+
+            value={phone}
+
+            onChange={(e) =>
+
+              setPhone(e.target.value)
+
+            }
+
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+
+          />
+
+        </div>
+
+        <div>
+
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+
+            City
+
+          </label>
+
+          <input
+
+            type="text"
+
+            placeholder="Enter city"
+
+            value={city}
+
+            onChange={(e) =>
+
+              setCity(e.target.value)
+
+            }
+
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+
+          />
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <button
+
+          type="submit"
+
+          className={`px-6 py-3 rounded-lg text-white font-semibold transition duration-300 ${editingUser
+            ? "bg-yellow-500 hover:bg-yellow-600"
+            : "bg-blue-600 hover:bg-blue-700"
+            }`}
+
+        >
+
+          {editingUser
+
+            ? "Update User"
+
+            : "Add User"}
+
+        </button>
+
+      </div>
 
     </form>
 

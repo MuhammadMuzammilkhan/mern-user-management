@@ -4,48 +4,101 @@ function UserCard({
 
   onEdit,
 
-  onDelete
+  onDelete,
 
 }) {
 
   return (
 
-    <div
-      style={{
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        padding: "15px",
-        marginBottom: "15px",
-      }}
-    >
+    <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 border border-gray-200">
 
-      <h3>{user.name}</h3>
+      {/* Avatar + User Info */}
 
-      <p>
-        <strong>Email:</strong> {user.email}
-      </p>
+      <div className="flex items-center gap-4 mb-5">
 
-      <p>
-        <strong>Phone:</strong> {user.phone}
-      </p>
+        <div className="w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl font-bold">
 
-      <p>
-        <strong>City:</strong> {user.city}
-      </p>
+          {user.name.charAt(0).toUpperCase()}
 
-      <button
-        onClick={() => onEdit(user)}
-      >
-        Edit
-      </button>
+        </div>
 
-      {" "}
+        <div>
 
-      <button
-        onClick={() => onDelete(user._id)}
-      >
-        Delete
-      </button>
+          <h3 className="text-xl font-bold text-gray-800">
+
+            {user.name}
+
+          </h3>
+
+          <p className="text-gray-500">
+
+            {user.email}
+
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* User Details */}
+
+      <div className="space-y-2 text-gray-700">
+
+        <p>
+
+          <span className="font-semibold">
+
+            📞 Phone:
+
+          </span>{" "}
+
+          {user.phone}
+
+        </p>
+
+        <p>
+
+          <span className="font-semibold">
+
+            📍 City:
+
+          </span>{" "}
+
+          {user.city}
+
+        </p>
+
+      </div>
+
+      {/* Action Buttons */}
+
+      <div className="flex gap-3 mt-6">
+
+        <button
+
+          onClick={() => onEdit(user)}
+
+          className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded-lg font-semibold transition duration-300"
+
+        >
+
+          Edit
+
+        </button>
+
+        <button
+
+          onClick={() => onDelete(user._id)}
+
+          className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg font-semibold transition duration-300"
+
+        >
+
+          Delete
+
+        </button>
+
+      </div>
 
     </div>
 

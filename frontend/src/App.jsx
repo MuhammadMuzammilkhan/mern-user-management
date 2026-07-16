@@ -8,6 +8,7 @@ import {
 } from "./services/userService";
 
 import AddUserForm from "./components/AddUserForm";
+import "./index.css";
 
 import UserDashboard from "./components/UserDashboard";
 
@@ -172,45 +173,93 @@ const handleDelete = async (id) => {
 
 };
 
-  return (
+return (
 
-    <div style={{ padding: "20px" }}>
+  <div className="min-h-screen bg-gray-100">
 
-      <h1>User Management System</h1>
+    {/* Header */}
 
-      <p>
+    <header className="bg-blue-600 text-white shadow-md">
 
-        Total Users : {users.length}
+      <div className="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
 
-      </p>
+        <div>
 
-      <hr />
+          <h1 className="text-3xl font-bold">
 
-      <AddUserForm
+            User Management System
 
-        onAdd={handleAddUser}
+          </h1>
 
-        onUpdate={handleUpdate}
+          <p className="text-blue-100 mt-1">
 
-        editingUser={editingUser}
+            MERN Stack CRUD Application
 
-      />
+          </p>
 
-      <hr />
+        </div>
 
-      <UserDashboard
+        <div className="text-right">
 
-        users={users}
+          <p className="text-sm">
 
-        onEdit={handleEdit}
+            Total Users
 
-        onDelete={handleDelete}
+          </p>
 
-      />
+          <h2 className="text-3xl font-bold">
 
-    </div>
+            {users.length}
 
-  );
+          </h2>
+
+        </div>
+
+      </div>
+
+    </header>
+
+    {/* Main Content */}
+
+    <main className="max-w-7xl mx-auto p-8">
+
+      {/* Form */}
+
+      <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+
+        <AddUserForm
+
+          onAdd={handleAddUser}
+
+          onUpdate={handleUpdate}
+
+          editingUser={editingUser}
+
+        />
+
+      </div>
+
+      {/* Dashboard */}
+
+      <div className="bg-white rounded-xl shadow-md p-6">
+
+        <UserDashboard
+
+          users={users}
+
+          onEdit={handleEdit}
+
+          onDelete={handleDelete}
+
+        />
+
+      </div>
+
+    </main>
+
+  </div>
+
+);
 
 }
 
